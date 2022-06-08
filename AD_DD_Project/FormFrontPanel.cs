@@ -34,28 +34,24 @@ namespace AD_DD_Project
             string PAS = FormLogin.PASS;
 
             sqlConnect.Open();
-            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Direktur Utama' or LVL_PEGAWAI = 'Manajer' or LVL_PEGAWAI = 'Admin' and ID_PEGAWAI = '" + ID + "' and PASSWORD_LOGIN = '" + PAS + "'";
+            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Direktur Utama' or LVL_PEGAWAI = 'Manajer' or LVL_PEGAWAI = 'Admin' and ID_PEGAWAI = '" + ID + "'";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             MySqlDataReader reader = sqlCommand.ExecuteReader();
-
             if (reader.Read())
             {
+                btnPembelian.Enabled = true;
             }
-            else
+            sqlConnect.Close();
+            sqlConnect.Open();
+
+            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Pegawai' and ID_PEGAWAI = '" + ID + "'";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            MySqlDataReader reader2 = sqlCommand.ExecuteReader();
+
+            if (reader2.Read())
             {
-                sqlConnect.Close();
-                sqlConnect.Open();
-
-                sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Pegawai' and ID_PEGAWAI = '" + ID + "' and PASSWORD_LOGIN = '" + PAS + "'";
-                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                MySqlDataReader reader2 = sqlCommand.ExecuteReader();
-
-                if (reader2.Read())
-                {
-                    btnPembelian.Enabled = false;
-                }
+                btnPembelian.Enabled = false;
             }
-            
             lblWellcome.Text = "Wellcome " + FormLogin.NAMALOGIN;
         }
 
