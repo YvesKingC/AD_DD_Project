@@ -11,9 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace AD_DD_Project
 {
-    public partial class FormLoadPembelian : Form
+    public partial class FormCekStock : Form
     {
-        public FormLoadPembelian()
+        public FormCekStock()
         {
             InitializeComponent();
         }
@@ -24,16 +24,22 @@ namespace AD_DD_Project
         public MySqlDataAdapter sqlAdapter;
         public string sqlQuery;
 
-        DataTable Supplier = new DataTable();
-        private void FormLoadPembelian_Load(object sender, EventArgs e)
+        private void FormCekStock_Load(object sender, EventArgs e)
         {
-            sqlQuery = "select ID_SUPPLIER, NAMA_SUPPLIER FROM SUPPLIER;";
+            sqlQuery = "select ID_SEPATU, NAMA_SEPATU, WARNA_SEPATU, UKURAN_SEPATU, STOCK_SEPATU, HARGA_PENJUALAN from SEPATU;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
-            sqlAdapter.Fill(Supplier);
-            cBoxSupplier.DataSource = Supplier;
-            cBoxSupplier.DisplayMember = "NAMA_SUPPLIER";
-            cBoxSupplier.ValueMember = "ID_SUPPLIER";
+
+            DataTable dgw = new DataTable();
+            sqlAdapter.Fill(dgw);
+            dgwStock.DataSource = dgw;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form formback = new FormFrontPanel();
+            formback.Show();
+            this.Visible = false;
         }
     }
 }

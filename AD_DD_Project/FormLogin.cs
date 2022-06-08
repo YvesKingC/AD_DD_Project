@@ -17,6 +17,7 @@ namespace AD_DD_Project
         {
             InitializeComponent();
         }
+        int index = 0;
 
         static string connectionString = "server=139.255.11.84;uid=student;pwd=isbmantap;database=DBD_04_TOKOSEPATU;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
@@ -25,35 +26,46 @@ namespace AD_DD_Project
         public string sqlQuery;
 
         DataTable Login = new DataTable();
+        DataTable dtUID = new DataTable();
+
+        public static string NAMALOGIN = "";
+        public static string UID = "";
+        public static string PASS = "";
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            sqlConnect.Open();
+            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(Login);
+            cBoxUID.DataSource = Login;
+            cBoxUID.DisplayMember = "UID";
+            cBoxUID.ValueMember = "UID";
+            sqlConnect.Close();
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             sqlConnect.Open();
-
-            sqlQuery = "select ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE ID_PEGAWAI = '" + tBoxUID.Text + "' and PASSWORD_LOGIN = '" + tBoxPass.Text + "'";
+            index = cBoxUID.SelectedIndex;
+            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Direktur Utama' or LVL_PEGAWAI = 'Manajer' or LVL_PEGAWAI = 'Admin' and ID_PEGAWAI = '" + cBoxUID.SelectedText + "' and PASSWORD_LOGIN = '" + tBoxPass.Text + "'";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(Login);
             MySqlDataReader reader = sqlCommand.ExecuteReader();
+            lblNama.Text = Login.Rows[index][0].ToString();
+
+            lblNama.Visible = false;
+            NAMALOGIN = lblNama.Text;
+            UID =  cBoxUID.Text;
+            PASS = tBoxPass.Text;
 
             if (reader.Read())
             {
-                sqlConnect.Close();
-                sqlConnect.Open();
-                sqlQuery = "select NAMA_PEGAWAI as 'NAMA PEGAWAI', ID_PEGAWAI AS 'UID',LVL_PEGAWAI AS 'JABATAN', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Admin' OR LVL_PEGAWAI = 'Manajer' OR LVL_PEGAWAI = 'Direktur Utama';";
-                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                MySqlDataReader reader2 = sqlCommand.ExecuteReader();
-                if (reader2.Read())
-                {
-                    Form formfrontpanel1 = new FormFrontPanelAtasan();
-                    formfrontpanel1.Show();
-                    this.Visible = false;
-                }
-                else
-                {
-                    Form formfrontpanel2 = new FormFrontPanelBiasa();
-                    formfrontpanel2.Show();
-                    this.Visible = false;
-                }
-                
+                Form formfrontpanel1 = new FormFrontPanel();
+                formfrontpanel1.Show();
+                this.Visible = false;
             }
             else
             {
