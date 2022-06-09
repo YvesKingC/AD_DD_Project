@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwDataToko = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tBoxAlamat = new System.Windows.Forms.TextBox();
+            this.tBoxNoTelp = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tBoxIDtokoBaru = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDataToko)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgwDataToko
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 180);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(367, 258);
-            this.dataGridView1.TabIndex = 0;
+            this.dgwDataToko.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwDataToko.Location = new System.Drawing.Point(13, 212);
+            this.dgwDataToko.Name = "dgwDataToko";
+            this.dgwDataToko.Size = new System.Drawing.Size(367, 258);
+            this.dgwDataToko.TabIndex = 0;
             // 
             // label1
             // 
@@ -65,19 +67,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "No Telp";
             // 
-            // textBox1
+            // tBoxAlamat
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 20);
-            this.textBox1.TabIndex = 3;
+            this.tBoxAlamat.Location = new System.Drawing.Point(122, 105);
+            this.tBoxAlamat.Name = "tBoxAlamat";
+            this.tBoxAlamat.Size = new System.Drawing.Size(258, 20);
+            this.tBoxAlamat.TabIndex = 3;
             // 
-            // textBox2
+            // tBoxNoTelp
             // 
-            this.textBox2.Location = new System.Drawing.Point(122, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 20);
-            this.textBox2.TabIndex = 4;
+            this.tBoxNoTelp.Location = new System.Drawing.Point(122, 131);
+            this.tBoxNoTelp.Name = "tBoxNoTelp";
+            this.tBoxNoTelp.Size = new System.Drawing.Size(258, 20);
+            this.tBoxNoTelp.TabIndex = 4;
             // 
             // label3
             // 
@@ -89,12 +91,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Data Toko Baru";
             // 
-            // textBox3
+            // tBoxIDtokoBaru
             // 
-            this.textBox3.Location = new System.Drawing.Point(122, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(258, 20);
-            this.textBox3.TabIndex = 7;
+            this.tBoxIDtokoBaru.Location = new System.Drawing.Point(122, 75);
+            this.tBoxIDtokoBaru.Name = "tBoxIDtokoBaru";
+            this.tBoxIDtokoBaru.Size = new System.Drawing.Size(258, 20);
+            this.tBoxIDtokoBaru.TabIndex = 7;
             // 
             // label4
             // 
@@ -105,22 +107,44 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "ID Toko Baru";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(305, 172);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(12, 172);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // FormInputTokoBaru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 450);
-            this.Controls.Add(this.textBox3);
+            this.ClientSize = new System.Drawing.Size(392, 482);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.tBoxIDtokoBaru);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tBoxNoTelp);
+            this.Controls.Add(this.tBoxAlamat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwDataToko);
             this.Name = "FormInputTokoBaru";
             this.Text = "FormInputTokoBaru";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormInputTokoBaru_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDataToko)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,13 +152,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwDataToko;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tBoxAlamat;
+        private System.Windows.Forms.TextBox tBoxNoTelp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tBoxIDtokoBaru;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnBack;
     }
 }

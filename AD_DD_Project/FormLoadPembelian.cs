@@ -28,13 +28,17 @@ namespace AD_DD_Project
         DataTable Sepatu = new DataTable();
         DataTable dtSepatuYangDibeli = new DataTable();
         DataTable masukdatabase = new DataTable();
+        DataTable masukdatabase2 = new DataTable();
+        DataTable masukdatabase3 = new DataTable();
 
         public static int indexidnotasekarang = 0;
-        public static string lunas;
-        public static string belumLunas;
+        public static string statuslunasbelum;
         public static string supplier;
         public static string hargasatuan;
         public static string hargatotal;
+        public static string idsepatu;
+        public static string idpegawai;
+        public static string tglpembelian;
 
         private void FormLoadPembelian_Load(object sender, EventArgs e)
         {
@@ -73,6 +77,15 @@ namespace AD_DD_Project
 
         private void btnCetak_Click(object sender, EventArgs e)
         {
+            if (rBtnLunas.Checked)
+            {
+                statuslunasbelum = "Lunas";
+            }
+            else if (rBtnBelumLunas.Checked)
+            {
+                statuslunasbelum = "Belum Lunas";
+            }
+
             sqlQuery = "SELECT ID_SEPATU, STOCK_SEPATU FROM SEPATU WHERE ID_SEPATU = '" + cBoxIDSepatu.SelectedValue.ToString() + "'";
             sqlCommand =   new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
@@ -87,31 +100,44 @@ namespace AD_DD_Project
             sqlConnect.Close();
 
 
-            //BUAT DATA TABLE BARU UNTUK MENGISI HISTORY PEMBELIAN DAN DATA TABLE BARU UNTUK HISTORY PENJUALAN.
+            //ISI DATA TABLE NOTA_PEMBELIAN
             sqlQuery = "select ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN from NOTA_PEMBELIAN;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(masukdatabase);
             indexidnotasekarang = masukdatabase.Rows.Count - 1;
             int index = indexidnotasekarang;
-            int idnotabelisekarang = Convert.ToInt32(masukdatabase.Rows[index][0]) + 1;
-            string idnotabelitambah = "NB00" + idnotabelisekarang.ToString();
+            int idnotabelisekarang = Convert.ToInt32(masukdatabase.Rows[index][0]);
+            int idnotabelisekarang2 = idnotabelisekarang + 1;
+            string idnotabelitambah = "NB00" + idnotabelisekarang2.ToString();
+
+            sqlQuery = "select ID_SEPATU, NAMA_SEPATU from SEPATU WHERE NAMA_SEPATU = '"+ cBoxIDSepatu.SelectedText +"';";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(masukdatabase2);
+            idsepatu = masukdatabase2.Rows[0][0].ToString();
+
+            sqlQuery = "SELECT ID_PEGAWAI, NAMA_PEGAWAI FROM PEGAWAI WHERE NAMA_PEGAWAI = '"+ FormLogin.namaPegawai +"';";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(masukdatabase3);
+            idpegawai = masukdatabase3.Rows[0][0].ToString();
 
             sqlConnect.Open();
-            sqlQuery = "insert into NOTA_PEMBELIAN (ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN) VALUES ('"+ idnotabelitambah +"','','','','','')";
+            sqlQuery = "insert into NOTA_PEMBELIAN (ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN) VALUES ('"+ idnotabelitambah +"','"+ idsepatu +"','"+ idpegawai + "','curdate()','"+ hargatotal +"','" + statuslunasbelum +"')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlCommand.ExecuteNonQuery();
             supplier = cBoxSupplier.Text;
+            sqlConnect.Close();
 
-            if (rBtnLunas.Checked)
-            {
-                lunas = "Lunas";
-            }
-            else if (rBtnBelumLunas.Checked)
-            {
-                belumLunas = "Belum Lunas";
-            }
+            //ISI DATA TABLE DETAIL_PEMBELIAN
+            sqlConnect.Open();
+            sqlQuery = "insert into DETAIL_PEMBELIAN (ID_SEPATU, ID_NOTA_PEMBELIAN, QTY_PEMBELIAN, HARGA_PEMBELIAN,TGL_PEMBELIAN) VALUES ('"+ idsepatu + "','"+ idnotabelitambah + "','"+ stokSekarang +"','"+ hargasatuan +"','curdate()');";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlCommand.ExecuteNonQuery();
+            sqlConnect.Close();
 
             Form formcetaknota = new FormNotaPembelian();
             formcetaknota.Show();

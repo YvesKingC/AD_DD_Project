@@ -43,7 +43,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 26);
+            this.label1.Location = new System.Drawing.Point(98, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 26);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // lblTanggalPembelian
             // 
             this.lblTanggalPembelian.AutoSize = true;
-            this.lblTanggalPembelian.Location = new System.Drawing.Point(31, 115);
+            this.lblTanggalPembelian.Location = new System.Drawing.Point(57, 80);
             this.lblTanggalPembelian.Name = "lblTanggalPembelian";
             this.lblTanggalPembelian.Size = new System.Drawing.Size(52, 13);
             this.lblTanggalPembelian.TabIndex = 1;
@@ -61,7 +61,7 @@
             // lblSupplier
             // 
             this.lblSupplier.AutoSize = true;
-            this.lblSupplier.Location = new System.Drawing.Point(31, 141);
+            this.lblSupplier.Location = new System.Drawing.Point(58, 108);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(51, 13);
             this.lblSupplier.TabIndex = 2;
@@ -70,7 +70,7 @@
             // lblNamaBarang
             // 
             this.lblNamaBarang.AutoSize = true;
-            this.lblNamaBarang.Location = new System.Drawing.Point(31, 208);
+            this.lblNamaBarang.Location = new System.Drawing.Point(31, 166);
             this.lblNamaBarang.Name = "lblNamaBarang";
             this.lblNamaBarang.Size = new System.Drawing.Size(78, 13);
             this.lblNamaBarang.TabIndex = 3;
@@ -79,7 +79,7 @@
             // lblHargaSatuan
             // 
             this.lblHargaSatuan.AutoSize = true;
-            this.lblHargaSatuan.Location = new System.Drawing.Point(31, 237);
+            this.lblHargaSatuan.Location = new System.Drawing.Point(30, 193);
             this.lblHargaSatuan.Name = "lblHargaSatuan";
             this.lblHargaSatuan.Size = new System.Drawing.Size(79, 13);
             this.lblHargaSatuan.TabIndex = 4;
@@ -88,7 +88,7 @@
             // lblTotalHarga
             // 
             this.lblTotalHarga.AutoSize = true;
-            this.lblTotalHarga.Location = new System.Drawing.Point(40, 266);
+            this.lblTotalHarga.Location = new System.Drawing.Point(40, 220);
             this.lblTotalHarga.Name = "lblTotalHarga";
             this.lblTotalHarga.Size = new System.Drawing.Size(69, 13);
             this.lblTotalHarga.TabIndex = 5;
@@ -97,7 +97,7 @@
             // lblPemesan
             // 
             this.lblPemesan.AutoSize = true;
-            this.lblPemesan.Location = new System.Drawing.Point(31, 167);
+            this.lblPemesan.Location = new System.Drawing.Point(21, 136);
             this.lblPemesan.Name = "lblPemesan";
             this.lblPemesan.Size = new System.Drawing.Size(88, 13);
             this.lblPemesan.TabIndex = 6;
@@ -105,7 +105,7 @@
             // 
             // btnHome
             // 
-            this.btnHome.Location = new System.Drawing.Point(43, 399);
+            this.btnHome.Location = new System.Drawing.Point(34, 280);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(75, 23);
             this.btnHome.TabIndex = 7;
@@ -115,7 +115,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(228, 399);
+            this.btnClose.Location = new System.Drawing.Point(231, 280);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(343, 324);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.lblPemesan);
