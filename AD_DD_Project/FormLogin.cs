@@ -17,7 +17,6 @@ namespace AD_DD_Project
         {
             InitializeComponent();
         }
-        int index = 0;
 
         static string connectionString = "server=139.255.11.84;uid=student;pwd=isbmantap;database=DBD_04_TOKOSEPATU;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
@@ -28,48 +27,47 @@ namespace AD_DD_Project
         DataTable Login = new DataTable();
         DataTable dtUID = new DataTable();
 
-        public static string NAMALOGIN = "";
+        public static string statusPegawai;
+        public static string namaPegawai;
         public static string UID = "";
         public static string PASS = "";
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            sqlConnect.Open();
-            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            sqlAdapter = new MySqlDataAdapter(sqlCommand);
-            sqlAdapter.Fill(Login);
-            cBoxUID.DataSource = Login;
-            cBoxUID.DisplayMember = "UID";
-            cBoxUID.ValueMember = "UID";
-            sqlConnect.Close();
+            tBoxPass.UseSystemPasswordChar = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             sqlConnect.Open();
-            index = cBoxUID.SelectedIndex;
-            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Direktur Utama' or LVL_PEGAWAI = 'Manajer' or LVL_PEGAWAI = 'Admin' and ID_PEGAWAI = '" + cBoxUID.SelectedText + "' and PASSWORD_LOGIN = '" + tBoxPass.Text + "'";
+            sqlQuery = "SELECT * FROM PEGAWAI WHERE ID_PEGAWAI = '" + tBoxUID.Text + "' and PASSWORD_LOGIN = '" + tBoxPass.Text + "';";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(Login);
-            MySqlDataReader reader = sqlCommand.ExecuteReader();
-            lblNama.Text = Login.Rows[index][0].ToString();
 
-            lblNama.Visible = false;
-            NAMALOGIN = lblNama.Text;
-            UID =  cBoxUID.Text;
-            PASS = tBoxPass.Text;
-
-            if (reader.Read())
+            if (Login.Rows.Count > 0)
             {
+                namaPegawai = Login.Rows[0][2].ToString();
+                statusPegawai = Login.Rows[0][7].ToString();
                 Form formfrontpanel1 = new FormFrontPanel();
                 formfrontpanel1.Show();
                 this.Visible = false;
             }
             else
             {
-                MessageBox.Show("Mohon periksa kembali UID dan Pass anda");
+                MessageBox.Show("User / Password Salah");
+            }
+        }
+
+        private void cBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBoxShowPass.Checked == true)
+            {
+                tBoxPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                tBoxPass.UseSystemPasswordChar = true;
             }
         }
     }

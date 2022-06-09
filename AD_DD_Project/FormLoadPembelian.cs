@@ -26,6 +26,14 @@ namespace AD_DD_Project
 
         DataTable Supplier = new DataTable();
         DataTable Sepatu = new DataTable();
+        DataTable dtSepatuYangDibeli = new DataTable();
+        DataTable masukdatabase = new DataTable();
+        public static string lunas;
+        public static string belumLunas;
+        public static string supplier;
+        public static string hargasatuan;
+        public static string hargatotal;
+
         private void FormLoadPembelian_Load(object sender, EventArgs e)
         {
             sqlQuery = "select ID_SUPPLIER, NAMA_SUPPLIER FROM SUPPLIER;";
@@ -56,6 +64,59 @@ namespace AD_DD_Project
             int TotalJual = HarjaJual * Quantity;
             lblTotalHarga.Text = TotalJual.ToString();
 
+            hargasatuan = lblHargaSatuan.Text;
+            hargatotal = lblTotalHarga.Text;
+
+        }
+
+        private void btnCetak_Click(object sender, EventArgs e)
+        {
+            sqlQuery = "SELECT ID_SEPATU, STOCK_SEPATU FROM SEPATU WHERE ID_SEPATU = '" + cBoxIDSepatu.SelectedValue.ToString() + "'";
+            sqlCommand =   new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(dtSepatuYangDibeli);
+            int stokSekarang = Convert.ToInt16(dtSepatuYangDibeli.Rows[0][1]);
+            int totalStok = stokSekarang + Convert.ToInt16(numQuantity.Value);
+
+            sqlConnect.Open();
+            sqlQuery = "UPDATE SEPATU SET STOCK_SEPATU = " + totalStok.ToString() + " WHERE ID_SEPATU = '"+cBoxIDSepatu.SelectedValue.ToString()+"' ";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.ExecuteNonQuery();
+
+            //BUAT DATA TABLE BARU UNTUK MENGISI HISTORY PEMBELIAN DAN DATA TABLE BARU UNTUK HISTORY PENJUALAN.
+
+            sqlQuery = "SELECT ID_SEPATU, STOCK_SEPATU FROM SEPATU WHERE ID_SEPATU = '" + cBoxIDSepatu.SelectedValue.ToString() + "'";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+
+            supplier = cBoxSupplier.Text;
+
+            if (rBtnLunas.Checked)
+            {
+                lunas = "Lunas";
+            }
+            else if (rBtnBelumLunas.Checked)
+            {
+                belumLunas = "Belum Lunas";
+            }
+
+            Form formcetaknota = new FormNotaPembelian();
+            formcetaknota.Show();
+            this.Visible = false;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form formback = new FormFrontPanel();
+            formback.Show();
+            this.Visible = false;
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            Form formhistory = new FormHistoryPembelian();
+            formhistory.Show();
+            this.Visible = false;
         }
     }
 }

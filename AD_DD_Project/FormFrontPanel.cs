@@ -18,8 +18,6 @@ namespace AD_DD_Project
             InitializeComponent();
         }
 
-        int index = 0;
-
         static string connectionString = "server=139.255.11.84;uid=student;pwd=isbmantap;database=DBD_04_TOKOSEPATU;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
         public MySqlCommand sqlCommand;
@@ -30,29 +28,24 @@ namespace AD_DD_Project
 
         private void FormFrontPanel_Load(object sender, EventArgs e)
         {
-            string ID = FormLogin.UID;
-            string PAS = FormLogin.PASS;
-
-            sqlConnect.Open();
-            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Direktur Utama' or LVL_PEGAWAI = 'Manajer' or LVL_PEGAWAI = 'Admin' and ID_PEGAWAI = '" + ID + "'";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            MySqlDataReader reader = sqlCommand.ExecuteReader();
-            if (reader.Read())
+           lblWellcome.Text = "Wellcome " + FormLogin.namaPegawai;
+            if (FormLogin.statusPegawai == "Direktur Utama" || FormLogin.statusPegawai == "Manajer" || FormLogin.statusPegawai == "Admin")
             {
                 btnPembelian.Enabled = true;
+                btnDataBaru.Enabled = true;
             }
-            sqlConnect.Close();
-            sqlConnect.Open();
-
-            sqlQuery = "select NAMA_PEGAWAI AS 'NAMA', ID_PEGAWAI AS 'UID', PASSWORD_LOGIN AS 'PASS' FROM PEGAWAI WHERE LVL_PEGAWAI = 'Pegawai' and ID_PEGAWAI = '" + ID + "'";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            MySqlDataReader reader2 = sqlCommand.ExecuteReader();
-
-            if (reader2.Read())
+            else if (FormLogin.statusPegawai == "Pegawai")
             {
                 btnPembelian.Enabled = false;
+                btnDataBaru.Enabled = false;
             }
-            lblWellcome.Text = "Wellcome " + FormLogin.NAMALOGIN;
+            else
+            {
+                btnPembelian.Enabled = false;
+                btnPenjualan.Enabled = false;
+                btnDataBaru.Enabled = false;
+            }
+
         }
 
         private void btnPembelian_Click(object sender, EventArgs e)

@@ -32,10 +32,8 @@
             this.cBoxSupplier = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCetak = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblTotalHarga = new System.Windows.Forms.Label();
@@ -44,6 +42,9 @@
             this.cBoxIDSepatu = new System.Windows.Forms.ComboBox();
             this.lblHargaSatuan = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.rBtnLunas = new System.Windows.Forms.RadioButton();
+            this.rBtnBelumLunas = new System.Windows.Forms.RadioButton();
+            this.btnHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,30 +83,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Status Pembelian";
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoCheck = false;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(145, 229);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(54, 17);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Lunas";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoCheck = false;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(237, 229);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(86, 17);
-            this.radioButton2.TabIndex = 13;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Belum Lunas";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -116,15 +93,16 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Pembelian";
             // 
-            // button1
+            // btnCetak
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(245, 278);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Cetak";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCetak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCetak.Location = new System.Drawing.Point(248, 287);
+            this.btnCetak.Name = "btnCetak";
+            this.btnCetak.Size = new System.Drawing.Size(75, 36);
+            this.btnCetak.TabIndex = 15;
+            this.btnCetak.Text = "Cetak";
+            this.btnCetak.UseVisualStyleBackColor = true;
+            this.btnCetak.Click += new System.EventHandler(this.btnCetak_Click);
             // 
             // label3
             // 
@@ -156,12 +134,13 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(27, 278);
+            this.btnBack.Location = new System.Drawing.Point(30, 287);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 36);
             this.btnBack.TabIndex = 32;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // numQuantity
             // 
@@ -197,11 +176,47 @@
             this.label8.TabIndex = 37;
             this.label8.Text = "Harga Barang";
             // 
+            // rBtnLunas
+            // 
+            this.rBtnLunas.AutoSize = true;
+            this.rBtnLunas.Location = new System.Drawing.Point(148, 229);
+            this.rBtnLunas.Name = "rBtnLunas";
+            this.rBtnLunas.Size = new System.Drawing.Size(54, 17);
+            this.rBtnLunas.TabIndex = 39;
+            this.rBtnLunas.TabStop = true;
+            this.rBtnLunas.Text = "Lunas";
+            this.rBtnLunas.UseVisualStyleBackColor = true;
+            // 
+            // rBtnBelumLunas
+            // 
+            this.rBtnBelumLunas.AutoSize = true;
+            this.rBtnBelumLunas.Location = new System.Drawing.Point(222, 229);
+            this.rBtnBelumLunas.Name = "rBtnBelumLunas";
+            this.rBtnBelumLunas.Size = new System.Drawing.Size(86, 17);
+            this.rBtnBelumLunas.TabIndex = 40;
+            this.rBtnBelumLunas.TabStop = true;
+            this.rBtnBelumLunas.Text = "Belum Lunas";
+            this.rBtnBelumLunas.UseVisualStyleBackColor = true;
+            // 
+            // btnHistory
+            // 
+            this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.Location = new System.Drawing.Point(142, 287);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(75, 36);
+            this.btnHistory.TabIndex = 41;
+            this.btnHistory.Text = "History";
+            this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
             // FormLoadPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 346);
+            this.Controls.Add(this.btnHistory);
+            this.Controls.Add(this.rBtnBelumLunas);
+            this.Controls.Add(this.rBtnLunas);
             this.Controls.Add(this.lblHargaSatuan);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cBoxIDSepatu);
@@ -210,10 +225,8 @@
             this.Controls.Add(this.lblTotalHarga);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCetak);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cBoxSupplier);
@@ -232,10 +245,8 @@
         private System.Windows.Forms.ComboBox cBoxSupplier;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCetak;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblTotalHarga;
@@ -244,5 +255,8 @@
         private System.Windows.Forms.ComboBox cBoxIDSepatu;
         private System.Windows.Forms.Label lblHargaSatuan;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton rBtnLunas;
+        private System.Windows.Forms.RadioButton rBtnBelumLunas;
+        private System.Windows.Forms.Button btnHistory;
     }
 }
