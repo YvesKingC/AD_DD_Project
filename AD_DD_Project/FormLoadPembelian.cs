@@ -28,6 +28,8 @@ namespace AD_DD_Project
         DataTable Sepatu = new DataTable();
         DataTable dtSepatuYangDibeli = new DataTable();
         DataTable masukdatabase = new DataTable();
+
+        public static int indexidnotasekarang = 0;
         public static string lunas;
         public static string belumLunas;
         public static string supplier;
@@ -82,13 +84,24 @@ namespace AD_DD_Project
             sqlQuery = "UPDATE SEPATU SET STOCK_SEPATU = " + totalStok.ToString() + " WHERE ID_SEPATU = '"+cBoxIDSepatu.SelectedValue.ToString()+"' ";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
+            sqlConnect.Close();
+
 
             //BUAT DATA TABLE BARU UNTUK MENGISI HISTORY PEMBELIAN DAN DATA TABLE BARU UNTUK HISTORY PENJUALAN.
-
-            sqlQuery = "SELECT ID_SEPATU, STOCK_SEPATU FROM SEPATU WHERE ID_SEPATU = '" + cBoxIDSepatu.SelectedValue.ToString() + "'";
+            sqlQuery = "select ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN from NOTA_PEMBELIAN;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(masukdatabase);
+            indexidnotasekarang = masukdatabase.Rows.Count - 1;
+            int index = indexidnotasekarang;
+            int idnotabelisekarang = Convert.ToInt32(masukdatabase.Rows[index][0]) + 1;
+            string idnotabelitambah = "NB00" + idnotabelisekarang.ToString();
 
+            sqlConnect.Open();
+            sqlQuery = "insert into NOTA_PEMBELIAN (ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN) VALUES ('"+ idnotabelitambah +"','','','','','')";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlCommand.ExecuteNonQuery();
             supplier = cBoxSupplier.Text;
 
             if (rBtnLunas.Checked)

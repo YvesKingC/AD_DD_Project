@@ -34,7 +34,7 @@ namespace AD_DD_Project
                 btnPembelian.Enabled = true;
                 btnDataBaru.Enabled = true;
             }
-            else if (FormLogin.statusPegawai == "Pegawai")
+            else if (FormLogin.statusPegawai == "Sales")
             {
                 btnPembelian.Enabled = false;
                 btnDataBaru.Enabled = false;
