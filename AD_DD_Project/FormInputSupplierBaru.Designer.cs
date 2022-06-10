@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tBoxIDSupplierBaru = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tBoxNoTelp = new System.Windows.Forms.TextBox();
+            this.tBoxAlamat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dgwSupplier = new System.Windows.Forms.DataGridView();
+            this.tBoxNamaSupp = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSupplier)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox3
+            // tBoxIDSupplierBaru
             // 
-            this.textBox3.Location = new System.Drawing.Point(120, 78);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(258, 20);
-            this.textBox3.TabIndex = 15;
+            this.tBoxIDSupplierBaru.Location = new System.Drawing.Point(120, 78);
+            this.tBoxIDSupplierBaru.Name = "tBoxIDSupplierBaru";
+            this.tBoxIDSupplierBaru.Size = new System.Drawing.Size(454, 20);
+            this.tBoxIDSupplierBaru.TabIndex = 15;
             // 
             // label4
             // 
@@ -67,19 +69,19 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Data Supplier Baru";
             // 
-            // textBox2
+            // tBoxNoTelp
             // 
-            this.textBox2.Location = new System.Drawing.Point(120, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 20);
-            this.textBox2.TabIndex = 12;
+            this.tBoxNoTelp.Location = new System.Drawing.Point(120, 156);
+            this.tBoxNoTelp.Name = "tBoxNoTelp";
+            this.tBoxNoTelp.Size = new System.Drawing.Size(454, 20);
+            this.tBoxNoTelp.TabIndex = 12;
             // 
-            // textBox1
+            // tBoxAlamat
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 20);
-            this.textBox1.TabIndex = 11;
+            this.tBoxAlamat.Location = new System.Drawing.Point(120, 130);
+            this.tBoxAlamat.Name = "tBoxAlamat";
+            this.tBoxAlamat.Size = new System.Drawing.Size(454, 20);
+            this.tBoxAlamat.TabIndex = 11;
             // 
             // label2
             // 
@@ -99,20 +101,20 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Alamat Baru";
             // 
-            // dataGridView1
+            // dgwSupplier
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 195);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(367, 258);
-            this.dataGridView1.TabIndex = 8;
+            this.dgwSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwSupplier.Location = new System.Drawing.Point(12, 221);
+            this.dgwSupplier.Name = "dgwSupplier";
+            this.dgwSupplier.Size = new System.Drawing.Size(563, 258);
+            this.dgwSupplier.TabIndex = 8;
             // 
-            // textBox4
+            // tBoxNamaSupp
             // 
-            this.textBox4.Location = new System.Drawing.Point(120, 104);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(258, 20);
-            this.textBox4.TabIndex = 17;
+            this.tBoxNamaSupp.Location = new System.Drawing.Point(120, 104);
+            this.tBoxNamaSupp.Name = "tBoxNamaSupp";
+            this.tBoxNamaSupp.Size = new System.Drawing.Size(454, 20);
+            this.tBoxNamaSupp.TabIndex = 17;
             // 
             // label5
             // 
@@ -123,24 +125,47 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Nama Supplier Baru";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(11, 192);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 18;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(499, 192);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // FormInputSupplierBaru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 466);
-            this.Controls.Add(this.textBox4);
+            this.ClientSize = new System.Drawing.Size(586, 492);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.tBoxNamaSupp);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tBoxIDSupplierBaru);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tBoxNoTelp);
+            this.Controls.Add(this.tBoxAlamat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwSupplier);
             this.Name = "FormInputSupplierBaru";
             this.Text = "FormInputSupplierBaru";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormInputSupplierBaru_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSupplier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,15 +173,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tBoxIDSupplierBaru;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tBoxNoTelp;
+        private System.Windows.Forms.TextBox tBoxAlamat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DataGridView dgwSupplier;
+        private System.Windows.Forms.TextBox tBoxNamaSupp;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnSave;
     }
 }

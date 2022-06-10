@@ -65,7 +65,7 @@ namespace AD_DD_Project
 
         private void btnDataBaru_Click(object sender, EventArgs e)
         {
-            Form formjual = new FormLoadPenjualan();
+            Form formjual = new FormInputDataBaru();
             formjual.Show();
             this.Visible = false;
         }

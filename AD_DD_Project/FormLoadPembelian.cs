@@ -112,7 +112,6 @@ namespace AD_DD_Project
             sqlAdapter.Fill(masukdatabase);
             indexidnotasekarang = masukdatabase.Rows.Count - 1;
             int index = indexidnotasekarang;
-           
             int idnotabelisekarang2 = masukdatabase.Rows.Count + 1;
             string idnotabelitambah = "NB00" + idnotabelisekarang2.ToString();
 

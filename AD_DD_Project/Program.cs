@@ -16,7 +16,7 @@ namespace AD_DD_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormInputTokoBaru());
+            Application.Run(new FormLogin());
         }
     }
 }
