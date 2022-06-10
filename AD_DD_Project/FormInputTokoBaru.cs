@@ -26,7 +26,7 @@ namespace AD_DD_Project
 
         private void FormInputTokoBaru_Load(object sender, EventArgs e)
         {
-            sqlQuery = "SELECT * FROM SEPATU;";
+            sqlQuery = "SELECT * FROM TOKO;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
 
@@ -44,7 +44,12 @@ namespace AD_DD_Project
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            sqlConnect.Open();
+            sqlQuery = "insert INTO TOKO (ID_TOKO, LOKASI_TOKO, TELP_TOKO) values ('"+ tBoxIDtokoBaru.Text +"','"+ tBoxAlamat.Text +"','"+ tBoxNoTelp.Text +"');";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlCommand.ExecuteNonQuery();
+            sqlConnect.Close();
         }
     }
 }
