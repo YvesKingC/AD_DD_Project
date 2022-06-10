@@ -32,13 +32,16 @@ namespace AD_DD_Project
         DataTable masukdatabase3 = new DataTable();
 
         public static int indexidnotasekarang = 0;
+        public static int Quantity;
         public static string statuslunasbelum;
         public static string supplier;
         public static string hargasatuan;
         public static string hargatotal;
+        public static string hargatotal2;
         public static string idsepatu;
         public static string idpegawai;
         public static string tglpembelian;
+        public static string namasepatu;
 
         private void FormLoadPembelian_Load(object sender, EventArgs e)
         {
@@ -50,27 +53,29 @@ namespace AD_DD_Project
             cBoxSupplier.DisplayMember = "NAMA_SUPPLIER";
             cBoxSupplier.ValueMember = "ID_SUPPLIER";
 
-            sqlQuery = "select ID_SEPATU, STOCK_SEPATU, HARGA_PENJUALAN FROM SEPATU;";
+            sqlQuery = "select ID_SEPATU,CONCAT(NAMA_SEPATU,' Uk. ' ,UKURAN_SEPATU) as `NAMA_SEPATU` ,  STOCK_SEPATU, HARGA_PEMBELIAN FROM SEPATU;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(Sepatu);
             cBoxIDSepatu.DataSource = Sepatu;
 
-            cBoxIDSepatu.DisplayMember = "ID_SEPATU";
+            cBoxIDSepatu.DisplayMember = "NAMA_SEPATU";
             cBoxIDSepatu.ValueMember = "ID_SEPATU";
+
+
         }
 
-        private void numQuantity_ValueChanged(object sender, EventArgs e)
+        public void numQuantity_ValueChanged(object sender, EventArgs e)
         {
             int posisiIndex = cBoxIDSepatu.SelectedIndex;
-            lblHargaSatuan.Text = Sepatu.Rows[posisiIndex]["HARGA_PENJUALAN"].ToString();
+            lblHargaSatuan.Text = Sepatu.Rows[posisiIndex]["HARGA_PEMBELIAN"].ToString();
 
             int HarjaJual = Convert.ToInt32(lblHargaSatuan.Text);
-            int Quantity = Convert.ToInt32(numQuantity.Value);
+            Quantity = Convert.ToInt32(numQuantity.Value);
             int TotalJual = HarjaJual * Quantity;
             lblTotalHarga.Text = TotalJual.ToString();
 
-            hargasatuan = lblHargaSatuan.Text;
+            hargatotal2 = lblHargaSatuan.Text;
             hargatotal = lblTotalHarga.Text;
 
         }
@@ -107,24 +112,24 @@ namespace AD_DD_Project
             sqlAdapter.Fill(masukdatabase);
             indexidnotasekarang = masukdatabase.Rows.Count - 1;
             int index = indexidnotasekarang;
-            int idnotabelisekarang = Convert.ToInt32(masukdatabase.Rows[index][0]);
-            int idnotabelisekarang2 = idnotabelisekarang + 1;
+           
+            int idnotabelisekarang2 = masukdatabase.Rows.Count + 1;
             string idnotabelitambah = "NB00" + idnotabelisekarang2.ToString();
 
-            sqlQuery = "select ID_SEPATU, NAMA_SEPATU from SEPATU WHERE NAMA_SEPATU = '"+ cBoxIDSepatu.SelectedText +"';";
+            sqlQuery = "select ID_SEPATU, NAMA_SEPATU from SEPATU WHERE ID_SEPATU = '" + cBoxIDSepatu.SelectedValue + "';";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(masukdatabase2);
             idsepatu = masukdatabase2.Rows[0][0].ToString();
 
-            sqlQuery = "SELECT ID_PEGAWAI, NAMA_PEGAWAI FROM PEGAWAI WHERE NAMA_PEGAWAI = '"+ FormLogin.namaPegawai +"';";
+            sqlQuery = "SELECT ID_PEGAWAI, NAMA_PEGAWAI FROM PEGAWAI WHERE NAMA_PEGAWAI = '" + FormLogin.namaPegawai + "';";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(masukdatabase3);
             idpegawai = masukdatabase3.Rows[0][0].ToString();
 
             sqlConnect.Open();
-            sqlQuery = "insert into NOTA_PEMBELIAN (ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN) VALUES ('"+ idnotabelitambah +"','"+ idsepatu +"','"+ idpegawai + "','curdate()','"+ hargatotal +"','" + statuslunasbelum +"')";
+            sqlQuery = "insert into NOTA_PEMBELIAN (ID_NOTA_PEMBELIAN, ID_SUPPLIER, ID_PEGAWAI, TGL_PEMBELIAN,TOTAL_HARGA_PEMBELIAN,STATUS_PEMBELIAN) VALUES ('" + idnotabelitambah + "','" + idsepatu + "','" + idpegawai + "',curdate(),'" + hargatotal + "','" + statuslunasbelum + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlCommand.ExecuteNonQuery();
@@ -133,12 +138,13 @@ namespace AD_DD_Project
 
             //ISI DATA TABLE DETAIL_PEMBELIAN
             sqlConnect.Open();
-            sqlQuery = "insert into DETAIL_PEMBELIAN (ID_SEPATU, ID_NOTA_PEMBELIAN, QTY_PEMBELIAN, HARGA_PEMBELIAN,TGL_PEMBELIAN) VALUES ('"+ idsepatu + "','"+ idnotabelitambah + "','"+ stokSekarang +"','"+ hargasatuan +"','curdate()');";
+            sqlQuery = "insert into DETAIL_PEMBELIAN (ID_SEPATU, ID_NOTA_PEMBELIAN, QTY_PEMBELIAN, HARGA_PEMBELIAN,TGL_PEMBELIAN) VALUES ('" + idsepatu + "','" + idnotabelitambah + "','" + numQuantity.Value + "','" + hargatotal2 + "',curdate());";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlCommand.ExecuteNonQuery();
             sqlConnect.Close();
-
+            
+            namasepatu = cBoxIDSepatu.Text;
             Form formcetaknota = new FormNotaPembelian();
             formcetaknota.Show();
             this.Visible = false;

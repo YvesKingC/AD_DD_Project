@@ -46,7 +46,7 @@
             this.dgwDataToko.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwDataToko.Location = new System.Drawing.Point(13, 212);
             this.dgwDataToko.Name = "dgwDataToko";
-            this.dgwDataToko.Size = new System.Drawing.Size(367, 258);
+            this.dgwDataToko.Size = new System.Drawing.Size(770, 258);
             this.dgwDataToko.TabIndex = 0;
             // 
             // label1
@@ -71,14 +71,14 @@
             // 
             this.tBoxAlamat.Location = new System.Drawing.Point(122, 105);
             this.tBoxAlamat.Name = "tBoxAlamat";
-            this.tBoxAlamat.Size = new System.Drawing.Size(258, 20);
+            this.tBoxAlamat.Size = new System.Drawing.Size(661, 20);
             this.tBoxAlamat.TabIndex = 3;
             // 
             // tBoxNoTelp
             // 
             this.tBoxNoTelp.Location = new System.Drawing.Point(122, 131);
             this.tBoxNoTelp.Name = "tBoxNoTelp";
-            this.tBoxNoTelp.Size = new System.Drawing.Size(258, 20);
+            this.tBoxNoTelp.Size = new System.Drawing.Size(661, 20);
             this.tBoxNoTelp.TabIndex = 4;
             // 
             // label3
@@ -95,7 +95,7 @@
             // 
             this.tBoxIDtokoBaru.Location = new System.Drawing.Point(122, 75);
             this.tBoxIDtokoBaru.Name = "tBoxIDtokoBaru";
-            this.tBoxIDtokoBaru.Size = new System.Drawing.Size(258, 20);
+            this.tBoxIDtokoBaru.Size = new System.Drawing.Size(661, 20);
             this.tBoxIDtokoBaru.TabIndex = 7;
             // 
             // label4
@@ -109,12 +109,13 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(305, 172);
+            this.btnSave.Location = new System.Drawing.Point(708, 172);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnBack
             // 
@@ -130,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 482);
+            this.ClientSize = new System.Drawing.Size(798, 482);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tBoxIDtokoBaru);

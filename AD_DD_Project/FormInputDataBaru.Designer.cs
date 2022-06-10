@@ -28,59 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnPegawai = new System.Windows.Forms.Button();
+            this.btnMember = new System.Windows.Forms.Button();
+            this.btnSepatu = new System.Windows.Forms.Button();
+            this.btnSupplier = new System.Windows.Forms.Button();
+            this.btnToko = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnPromo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnPegawai
             // 
-            this.button1.Location = new System.Drawing.Point(47, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Pegawai Baru";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPegawai.Location = new System.Drawing.Point(47, 176);
+            this.btnPegawai.Name = "btnPegawai";
+            this.btnPegawai.Size = new System.Drawing.Size(159, 51);
+            this.btnPegawai.TabIndex = 0;
+            this.btnPegawai.Text = "Pegawai Baru";
+            this.btnPegawai.UseVisualStyleBackColor = true;
+            this.btnPegawai.Click += new System.EventHandler(this.btnPegawai_Click);
             // 
-            // button2
+            // btnMember
             // 
-            this.button2.Location = new System.Drawing.Point(47, 260);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 51);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Member Baru";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnMember.Location = new System.Drawing.Point(47, 260);
+            this.btnMember.Name = "btnMember";
+            this.btnMember.Size = new System.Drawing.Size(159, 51);
+            this.btnMember.TabIndex = 1;
+            this.btnMember.Text = "Member Baru";
+            this.btnMember.UseVisualStyleBackColor = true;
+            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
             // 
-            // button3
+            // btnSepatu
             // 
-            this.button3.Location = new System.Drawing.Point(239, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 51);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Sepatu Baru";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSepatu.Location = new System.Drawing.Point(239, 176);
+            this.btnSepatu.Name = "btnSepatu";
+            this.btnSepatu.Size = new System.Drawing.Size(159, 51);
+            this.btnSepatu.TabIndex = 2;
+            this.btnSepatu.Text = "Sepatu Baru";
+            this.btnSepatu.UseVisualStyleBackColor = true;
+            this.btnSepatu.Click += new System.EventHandler(this.btnSepatu_Click);
             // 
-            // button4
+            // btnSupplier
             // 
-            this.button4.Location = new System.Drawing.Point(239, 98);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 51);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Supplier Baru";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSupplier.Location = new System.Drawing.Point(239, 98);
+            this.btnSupplier.Name = "btnSupplier";
+            this.btnSupplier.Size = new System.Drawing.Size(159, 51);
+            this.btnSupplier.TabIndex = 3;
+            this.btnSupplier.Text = "Supplier Baru";
+            this.btnSupplier.UseVisualStyleBackColor = true;
+            this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
-            // button5
+            // btnToko
             // 
-            this.button5.Location = new System.Drawing.Point(47, 98);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(159, 51);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Toko Baru";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnToko.Location = new System.Drawing.Point(47, 98);
+            this.btnToko.Name = "btnToko";
+            this.btnToko.Size = new System.Drawing.Size(159, 51);
+            this.btnToko.TabIndex = 4;
+            this.btnToko.Text = "Toko Baru";
+            this.btnToko.UseVisualStyleBackColor = true;
+            this.btnToko.Click += new System.EventHandler(this.btnToko_Click);
             // 
             // label1
             // 
@@ -92,27 +97,28 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Data Baru";
             // 
-            // button6
+            // btnPromo
             // 
-            this.button6.Location = new System.Drawing.Point(239, 260);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(159, 51);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Promo Diskon Baru";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnPromo.Location = new System.Drawing.Point(239, 260);
+            this.btnPromo.Name = "btnPromo";
+            this.btnPromo.Size = new System.Drawing.Size(159, 51);
+            this.btnPromo.TabIndex = 6;
+            this.btnPromo.Text = "Promo Diskon Baru";
+            this.btnPromo.UseVisualStyleBackColor = true;
+            this.btnPromo.Click += new System.EventHandler(this.btnPromo_Click);
             // 
             // FormInputDataBaru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 356);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnPromo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnToko);
+            this.Controls.Add(this.btnSupplier);
+            this.Controls.Add(this.btnSepatu);
+            this.Controls.Add(this.btnMember);
+            this.Controls.Add(this.btnPegawai);
             this.Name = "FormInputDataBaru";
             this.Text = "Pilih Mana";
             this.ResumeLayout(false);
@@ -122,12 +128,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnPegawai;
+        private System.Windows.Forms.Button btnMember;
+        private System.Windows.Forms.Button btnSepatu;
+        private System.Windows.Forms.Button btnSupplier;
+        private System.Windows.Forms.Button btnToko;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnPromo;
     }
 }

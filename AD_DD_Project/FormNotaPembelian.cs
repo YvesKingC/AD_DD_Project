@@ -19,11 +19,13 @@ namespace AD_DD_Project
 
         private void FormNotaPembelian_Load(object sender, EventArgs e)
         {
-            lblTanggalPembelian.Text = "Tanggal : " + DateTime.Now.ToString();
+            lblTanggalPembelian.Text = DateTime.Now.ToString();
             lblSupplier.Text = FormLoadPembelian.supplier;
             lblPemesan.Text = FormLogin.namaPegawai;
-            lblHargaSatuan.Text = FormLoadPembelian.hargasatuan;
+            lblNamaBarang.Text = FormLoadPembelian.namasepatu;
+            lblHargaSatuan.Text = FormLoadPembelian.hargatotal2;
             lblTotalHarga.Text = FormLoadPembelian.hargatotal;
+            lblQuantity.Text = FormLoadPembelian.Quantity.ToString();
         }
 
         private void btnHome_Click(object sender, EventArgs e)

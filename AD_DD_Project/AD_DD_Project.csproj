@@ -63,6 +63,30 @@
     <Compile Include="FormHistoryPembelian.Designer.cs">
       <DependentUpon>FormHistoryPembelian.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInputMemberBaru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputMemberBaru.Designer.cs">
+      <DependentUpon>FormInputMemberBaru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputPegawaiBaru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputPegawaiBaru.Designer.cs">
+      <DependentUpon>FormInputPegawaiBaru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputPromoBaru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputPromoBaru.Designer.cs">
+      <DependentUpon>FormInputPromoBaru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputSepatuBaru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInputSepatuBaru.Designer.cs">
+      <DependentUpon>FormInputSepatuBaru.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInputSupplierBaru.cs">
       <SubType>Form</SubType>
     </Compile>

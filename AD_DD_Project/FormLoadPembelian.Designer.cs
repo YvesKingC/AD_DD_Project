@@ -155,7 +155,7 @@
             this.cBoxIDSepatu.FormattingEnabled = true;
             this.cBoxIDSepatu.Location = new System.Drawing.Point(148, 115);
             this.cBoxIDSepatu.Name = "cBoxIDSepatu";
-            this.cBoxIDSepatu.Size = new System.Drawing.Size(175, 21);
+            this.cBoxIDSepatu.Size = new System.Drawing.Size(324, 21);
             this.cBoxIDSepatu.TabIndex = 36;
             // 
             // lblHargaSatuan
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 346);
+            this.ClientSize = new System.Drawing.Size(515, 346);
             this.Controls.Add(this.btnHistory);
             this.Controls.Add(this.rBtnBelumLunas);
             this.Controls.Add(this.rBtnLunas);

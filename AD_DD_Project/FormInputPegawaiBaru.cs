@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AD_DD_Project
 {
-    public partial class FormLoadPenjualan : Form
+    public partial class FormInputPegawaiBaru : Form
     {
-        public FormLoadPenjualan()
+        public FormInputPegawaiBaru()
         {
             InitializeComponent();
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

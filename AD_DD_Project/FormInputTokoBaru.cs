@@ -26,7 +26,7 @@ namespace AD_DD_Project
 
         private void FormInputTokoBaru_Load(object sender, EventArgs e)
         {
-            sqlQuery = "select ID_SEPATU, NAMA_SEPATU, WARNA_SEPATU, UKURAN_SEPATU, STOCK_SEPATU, HARGA_PENJUALAN from SEPATU;";
+            sqlQuery = "SELECT * FROM SEPATU;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
 
@@ -40,6 +40,11 @@ namespace AD_DD_Project
             Form formback = new FormFrontPanel();
             formback.Show();
             this.Visible = false;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
